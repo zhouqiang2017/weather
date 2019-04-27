@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the zhouqiang2017/weather.
+ *
+ * (c) zhouqiang <i@zhouqiang.me>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Zhouqiang2017\Weather\Tests;
 
 use PHPUnit\Framework\TestCase;
@@ -10,13 +19,12 @@ use Mockery\Matcher\AnyArgs;
 use Zhouqiang2017\Weather\Exceptions\HttpException;
 use Zhouqiang2017\Weather\Exceptions\InvalidArgumentException;
 use Zhouqiang2017\Weather\Weather;
-/**
- * Class WeatherTest
- *
- * @package \\${NAMESPACE}
- */
-class WeatherTest extends TestCase {
 
+/**
+ * Class WeatherTest.
+ */
+class WeatherTest extends TestCase
+{
     public function testGetWeather()
     {
         // json
@@ -75,6 +83,7 @@ class WeatherTest extends TestCase {
         // 设置参数后，timeout 为 5000
         $this->assertSame(5000, $w->getHttpClient()->getConfig('timeout'));
     }
+
     // 检查 $type 参数
     public function testGetWeatherWithInvalidType()
     {
@@ -86,6 +95,7 @@ class WeatherTest extends TestCase {
         $w->getWeather('深圳', 'foo');
         $this->fail('Failed to assert getWeather throw exception with invalid argument.');
     }
+
     // 检查 $format 参数
     public function testGetWeatherWithInvalidFormat()
     {
@@ -99,6 +109,7 @@ class WeatherTest extends TestCase {
         // 如果没有抛出异常，就会运行到这行，标记当前测试没成功
         $this->fail('Failed to assert getWeather throw exception with invalid argument.');
     }
+
     public function testGetWeatherWithGuzzleRuntimeException()
     {
         $client = \Mockery::mock(Client::class);
@@ -135,5 +146,4 @@ class WeatherTest extends TestCase {
         // 断言正确传参并返回
         $this->assertSame(['success' => true], $w->getForecastsWeather('深圳'));
     }
-
 }
