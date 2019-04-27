@@ -1,0 +1,28 @@
+{
+    "name": "zhouqiang2017\/weather",
+    "description": "I learn create a pageist",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "zhouqiang2017",
+            "email": "443682811@qq.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "phpunit/phpunit": "7.5.6",
+        "mockery/mockery": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zhouqiang2017\\Weather\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Zhouqiang2017\\Weather\\ServiceProvider"
+            ]
+        }
+    }
+}
